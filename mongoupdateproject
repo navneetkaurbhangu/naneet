@@ -1,0 +1,43 @@
+const MongoClient = require('mongodb').MongoClient;
+const uri = "mongodb+srv://dbuser:nikhil@cluster0-dqu8h.mongodb.net/test?retryWrites=true&w=majority";
+const client = new MongoClient(uri,{ useUnifiedTopology: true } , { useNewUrlParser: true });
+client.connect(err => {
+    if (err) throw err;
+  const collection = client.db("Garda_Electronics").collection("Repair");
+ 
+  var delete_0 = {repair_id:'04'};
+  
+	 collection.deleteOne(delete_0,function(err,res){
+		 if (err) throw err;
+		 console.log("row deleted");
+     });
+     if (err) throw err;
+     const collection_0 = client.db("Garda_Electronics").collection("Employees");
+    
+     var delete_1 = {Employee_Id: '103'};
+     
+        collection_0.deleteOne(delete_1,function(err,res){
+            if (err) throw err;
+            console.log("row deleted");
+        });
+        if (err) throw err;
+        const collection_1 = client.db("Garda_Electronics").collection("Mobile_Insurance");
+       
+        var delete_2 = {insurencenumber:'4553'};
+        
+           collection_1.deleteOne(delete_2,function(err,res){
+               if (err) throw err;
+               console.log("row deleted");
+           });
+           if (err) throw err;
+           const collection_2 = client.db("Garda_Electronics").collection("Orders");
+          
+           var delete_3 = {order_id:'122'};
+           
+              collection_2.deleteOne(delete_3,function(err,res){
+                  if (err) throw err;
+                  console.log("row deleted");
+              });
+  console.log("connected");
+  client.close();
+});
